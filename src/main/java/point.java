@@ -12,9 +12,12 @@ public class point {
         return Math.sqrt((Math.pow(this.num,2)+Math.pow(this.den,2))); //sqrt of x^2 + y^2
     }
 
-    /*public boolean compareTo(point aPoint, point bPoint) {
-        return 0;
-    }*/
+    public boolean compareTo(point bPoint) { //used in the form "is this point greater than this point?"
+        if(this.num*bPoint.den>=bPoint.num*this.den)
+            return true;
+        else
+            return false;
+    }
 
     public point yMirror(){ //takes no args because an object is used to call it and this references that objects data
         return new point(-this.num, this.den);
@@ -26,7 +29,7 @@ public class point {
 
     @Override
     public String toString(){
-        return "Point value: " + this.num + "/" + this.den;
+        return "Point value: (" + this.num + ", " + this.den + ")";
     }
 
 }

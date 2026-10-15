@@ -9,21 +9,35 @@ public class rational {
             System.out.println("denominator cannot be 0!"); //exception for 0 as den
     }
 
-    /*public double add(rational aRat){ //only one arg as an object will call fun
-        return new rational();
-    }
-
-    public double subtract(rational aRat){
-        //find gcd and add then simplify
-    }
-
-    public double multiply(rational aRat){
-        //find gcd and add then simplify
-    }
-
-    public double divide(rational aRat){
-        //find gcd and add then simplify
+    /*public int gcd(a, b){  //c is result of each recursion, pass b as new number being modded by newest c
+        int a = this.den;
+        int b = this.num;
+        int c = b%a;
+        if(c!=0)
+            gcd(b, c);
+        return b; //return what we modded by to get 0
     }*/
 
+   public rational add(rational aRat){ //only one arg as an object will call fun
+       return new rational(((this.num*aRat.den)+(aRat.num*this.den)), (this.den*aRat.den));
+    } //returns (ad+bc)/bd
+
+    public rational subtract(rational aRat){
+        return new rational(((this.num*aRat.den)-(aRat.num*this.den)), (this.den*aRat.den));
+    } //returns (ad-bc)/bd
+
+    public rational multiply(rational aRat){
+        return new rational((this.num*aRat.num), (this.den*aRat.den));
+    } // returns ac/bd
+
+    public rational divide(rational aRat){
+        return new rational((this.num*aRat.den), (this.den*aRat.num));
+    } // returns ad/bc
+
+
+    @Override
+    public String toString(){
+        return "Rational value: " + this.num + "/" + this.den;
+    }
 
 }
